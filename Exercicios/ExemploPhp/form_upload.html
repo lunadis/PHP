@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exemplo de um formulário WEB com Upload de arquivo</title>
+</head>
+<body>
+	<table border = "0" cellpadding="3" cellspacing="0" width="100%"> <!-- table -> comando para  criação de tabela -->
+		<tr>
+			<td height="30" bgcolor="#8CDAFF">
+				<b> Upload de Arquivo</b>							
+			</td>
+			<td align="right" bgcolor="#8CDAFF">
+				<?=date("d-m-Y H:i:s")?>&nbsp;
+			</td>
+		</tr>
+	</table>
+
+	<!-- incluir enctype="multipar/form-data sem o qual o form não executa
+		Existem dois tipos de metodos de envio GET e POST, a diferença esta basicamente na capacidade de envio de dados. O GET é limitado a cerca de 2kb de dados e o POST não possui limites. Outra difrença é a forma de envio, os dados anexados ao nome do script informado em ACTION, ja em POST os dados são enviador no corpo da mensagem que sera enviada ao servidaor. Via de regra utilize POST somente em situalçoes em que os dados possuam tamanhos pequenos e-resize não causem nenhum problema de segurança (para o envio de login e esenha utlize sempre GET) -->
+
+	<form name="usr" enctype="multipart/form-data" method="post" action="Upload.php5">
+		<table border="2" cellpadding="5" cellspacing="5">
+			<tr>
+				<td height="30"><b>ARQUIVO</b>					
+				</td>
+				<td height="30">
+				<!-- Campo hidden informa o tamanho maximo em bytes que o arquivo deve possuir, este elemento do formulario deve ser sempre usado para evitar que o usuário tenham o problema de ter que espear pela transferencia de um arquivo para só então descobrir que ele era grande demais e a transferencia falhar. Fique ciente: é muito simples burlar esse parametro pelo lado do navegador, portatnto nunca dependa exclusivamente desse recurso para bloquear arquivos com maior tamanho.
+				isso é um rescurso meramente conveniente para usuário da aplicação no lado do cliente. Os parametros de PHP (No servidor) para "maximum-size", no entanto, não podem ser burlados -->
+					<input type="hidden" name="MAX FILE SIZE" value="100000">
+					<!-- criar um campo com o tipo input type=file que define o tipo de entrada como arquivo-->
+					<input type="FILE" name="arquivo" size="50">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="">
+					<input type="submit" value="Enviar o arquivo">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>>
